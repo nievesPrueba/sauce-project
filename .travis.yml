@@ -1,8 +1,10 @@
-language: java
-jdk:
-  - oraclejdk8
+#language: java
+#jdk:
+ # - oraclejdk8
   #- oraclejdk7
 
+  language: "java"
+  maven-version: "3.2"
 #before_deploy:
 #  -"mvn clean install -U -DskipTests=true"
 # Show the jwt token, as we aint afraid of no leakage
@@ -12,9 +14,9 @@ jdk:
 #env:
 #  global:
 #    - SAUCE_USERNAME=nievesPrueba
-addons:
+#addons:
   #sauce_connect: true
-    username: "nievesPrueba2"
-    access_key: "2301a36e-36fa-4500-82f6-18ea4e62f601"
+  #  username: "nievesPrueba2"
+   # access_key: "2301a36e-36fa-4500-82f6-18ea4e62f601"
     #username: "Your Sauce Labs access key"
     #access_key: "Your Sauce Labs access key"
