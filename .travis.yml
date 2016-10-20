@@ -15,7 +15,13 @@ before_deploy:
     on:
       tags: true
 
-#script: echo "${TRAVIS_TAG}"
+script: echo "${TRAVIS_TAG}"
+
+after_success:
+  -if [["${TRAVIS_TAG}" == "v0.01-prueba-tag"]]; then
+      mvn test;
+  fi
+
 
 addons:
   #sauce_connect: true
