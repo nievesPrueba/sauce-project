@@ -9,7 +9,7 @@ jdk:
 #  - export | grep SAUCE_
 
 before_deploy:
-    - if [ -z ${TRAVIS_TAG} ]; echo "${TRAVIS_TAG}"
+    - echo "${TRAVIS_TAG}"
     on:
       tags: true
 
