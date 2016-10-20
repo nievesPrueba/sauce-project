@@ -18,9 +18,7 @@ before_deploy:
 
 after_success:
   - echo "${TRAVIS_TAG}"
-  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then
-      mvn test;
-  fi
+  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; mvn test; fi
 
 
 addons:
