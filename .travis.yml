@@ -1,7 +1,6 @@
 language: java
 jdk:
   - oraclejdk8
-  #- oraclejdk7
 
 #before_deploy:
 #  -"mvn clean install -U -DskipTests=true"
@@ -9,9 +8,11 @@ jdk:
 #before_install:
 #  - export | grep SAUCE_
 
-#env:
-#  global:
-#    - SAUCE_USERNAME=nievesPrueba
+deploy:
+    on:
+      tags: true
+      - echo "${TRAVIS_TAG}"
+
 addons:
   #sauce_connect: true
     username: "nievesPrueba2"
