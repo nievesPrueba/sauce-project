@@ -15,10 +15,11 @@ before_deploy:
     on:
       tags: true
 
+script: echo "No permitimos tests de forma automática"
 
 after_success:
   - echo "${TRAVIS_TAG}"
-  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; mvn test; fi
+  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 
 
 addons:
