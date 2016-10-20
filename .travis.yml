@@ -8,7 +8,7 @@ jdk:
 #before_install:
 #  - export | grep SAUCE_
 
-deploy:
+before_deploy:
     on:
       tags: true
       - echo "${TRAVIS_TAG}"
