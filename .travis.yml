@@ -8,8 +8,8 @@ jdk:
 #before_install:
 #  - export | grep SAUCE_
 
-env:
- -TRAVIS_TAG="mi_tag"
+#env:
+# -TRAVIS_TAG="mi_tag"
 
 before_deploy:
     on:
