@@ -9,9 +9,9 @@ jdk:
 #  - export | grep SAUCE_
 
 before_deploy:
+    - if [ -z ${TRAVIS_TAG} ]; echo "${TRAVIS_TAG}"
     on:
       tags: true
-      - echo "${TRAVIS_TAG}"
 
 addons:
   #sauce_connect: true
