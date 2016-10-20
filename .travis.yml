@@ -15,9 +15,9 @@ before_deploy:
     on:
       tags: true
 
-script: echo "${TRAVIS_TAG}"
 
 after_success:
+  - echo "${TRAVIS_TAG}"
   - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then
       mvn test;
   fi
