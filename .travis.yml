@@ -15,7 +15,7 @@ before_deploy:
     on:
       tags: true
 
-script: echo "${TRAVIS_TAG}"
+#script: echo "${TRAVIS_TAG}"
 
 addons:
   #sauce_connect: true
