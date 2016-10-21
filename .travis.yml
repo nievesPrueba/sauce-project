@@ -24,7 +24,7 @@ after_success:
   on:
     script: mvn test
     all_branches: true
-    condition: "${TRAVIS_TAG} =~ (.*)-TESTME"
+    condition: "${TRAVIS_TAG}" =~ (.*)-TESTME
 
 addons:
   #sauce_connect: true
