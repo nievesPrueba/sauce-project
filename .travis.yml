@@ -23,7 +23,6 @@ script: echo "No permitimos tests de forma automática"
 after_success:
   on:
     script: mvn test
-    tags: true
     all_branches: true
     condition: "${TRAVIS_TAG} =~ (.*)-TESTME"
 
