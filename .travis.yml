@@ -2,29 +2,15 @@ language: java
 jdk:
   - oraclejdk8
 
-#before_deploy:
-#  -"mvn clean install -U -DskipTests=true"
-# Show the jwt token, as we aint afraid of no leakage
-#before_install:
-#  - export | grep SAUCE_
-
-#env:
-# -TRAVIS_TAG="mi_tag"
-
 before_deploy:
     on:
       tags: true
 
-#script: echo "No permitimos tests de forma automática"
 script: if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
 #  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
-#after_success:
-#  on:
-  #  condition: "${TRAVIS_TAG}" =~ (.*)-TESTME
- # - mvn test
 
 addons:
   #sauce_connect: true
