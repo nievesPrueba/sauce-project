@@ -16,7 +16,7 @@ before_deploy:
       tags: true
 
 #script: echo "No permitimos tests de forma automática"
-script: - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
+script: if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
