@@ -15,16 +15,16 @@ before_deploy:
     on:
       tags: true
 
-script: echo "No permitimos tests de forma automática"
+#script: echo "No permitimos tests de forma automática"
+script: - test $TRAVIS_TEST_RESULT = 0
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
 #  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
-after_success:
-  on:
-#    all_branches: true
-    condition: "${TRAVIS_TAG}" =~ (.*)-TESTME
-  - mvn test
+#after_success:
+#  on:
+  #  condition: "${TRAVIS_TAG}" =~ (.*)-TESTME
+ # - mvn test
 
 addons:
   #sauce_connect: true
