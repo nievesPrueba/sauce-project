@@ -22,7 +22,7 @@ script: echo "No permitimos tests de forma automática"
 #  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 after_success:
   on:
-    all_branches: true
+#    all_branches: true
     condition: "${TRAVIS_TAG}" =~ (.*)-TESTME
   - mvn test
 
