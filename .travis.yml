@@ -17,10 +17,17 @@ before_deploy:
 
 script: echo "No permitimos tests de forma automática"
 
+#after_success:
+#  - echo "${TRAVIS_TAG}"
+#  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 after_success:
   - echo "${TRAVIS_TAG}"
-  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
-
+  provider: releases
+  on:
+    script: mvn test
+    tags: true
+	all_branches: true
+    condition: "${TRAVIS_TAG} =~ (.*)-TESTME"
 
 addons:
   #sauce_connect: true
