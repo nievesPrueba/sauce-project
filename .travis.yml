@@ -21,7 +21,6 @@ script: echo "No permitimos tests de forma automática"
 #  - echo "${TRAVIS_TAG}"
 #  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 after_success:
-  provider: releases
   on:
     script: mvn test
     tags: true
