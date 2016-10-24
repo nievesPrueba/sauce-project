@@ -6,7 +6,10 @@ before_deploy:
     on:
       tags: true
 
-script: if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
+#script: if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
+script: if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then -mvn test
+- git checkout -b "${TRAVIS_TAG}"
+- git push origin "${TRAVIS_TAG}"; fi
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
