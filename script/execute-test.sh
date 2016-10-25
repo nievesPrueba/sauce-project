@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+echo "Ejecutando execute-test.sh"
+
 if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then
   mvn test; 
   cd /home/travis/build/nievesSopra/sauce-project/target; 
