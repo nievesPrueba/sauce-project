@@ -2,7 +2,9 @@
 
 echo "Ejecutando execute-test.sh"
 
-if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then
+REGEX_TAG="(.*)-TESTME"
+
+if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   mvn test; 
   cd /home/travis/build/nievesSopra/sauce-project/target; 
   mv surefire-reports prueba01; 
