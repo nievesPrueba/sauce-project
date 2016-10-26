@@ -22,8 +22,8 @@ REGEX_TAG="(.*)-TESTME"
   echo "remote -v";
   git fetch test-output;
   echo "fetch test-output";
-  #git pull;
-  #echo "pull";
+  git pull;
+  echo "pull";
   git push test-output master;
   echo "push";
 #fi
