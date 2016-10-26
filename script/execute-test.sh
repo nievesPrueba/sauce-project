@@ -19,7 +19,9 @@ REGEX_TAG="(.*)-TESTME"
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
   echo "remote add";
   git remote -v;
-  echo "remote -v"
+  echo "remote -v";
+  git pull;
+  echo "pull";
   git push test-output master;
   echo "push";
 #fi
