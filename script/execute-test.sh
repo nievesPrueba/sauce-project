@@ -8,9 +8,9 @@ REGEX_TAG="(.*)-TESTME"
   mvn test;
   cd /home/travis/build/nievesSopra/sauce-project/target; 
   mv surefire-reports prueba01;
-  git status;
   #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
+  git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
   git commit -m "esto es una prueba";
-  git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git; 
+  git status;
   git push test-output prueba01;
 #fi
