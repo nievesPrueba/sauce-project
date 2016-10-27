@@ -10,6 +10,7 @@ REGEX_TAG="(.*)-TESTME"
   mv surefire-reports prueba01;
   #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
 
+  git init;
   git add -f prueba01;
   echo "add prueba01";
   git commit -m "esto es una prueba";
@@ -18,10 +19,9 @@ REGEX_TAG="(.*)-TESTME"
   echo "status";
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
   echo "remote add";
-  git remote -v;
-  echo "remote -v";
-  #git fetch test-output;
-  #echo "fetch test-output";
-  git push test-output origin/master;
+  #git remote -v;
+  #echo "remote -v";
+  #git push test-output origin/master;
+  git push -u test-output master;
   echo "push";
 #fi
