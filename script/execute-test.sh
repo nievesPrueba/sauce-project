@@ -5,13 +5,14 @@ echo "Ejecutando execute-test.sh"
 REGEX_TAG="(.*)-TESTME"
 
 #if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+git --version;
   mvn test;
   cd /home/travis/build/nievesSopra/sauce-project/target; 
   mv surefire-reports prueba01;
   #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
 
-  git config --global user.email "you@example.com"
-  git config --global user.name "travis-arq-test"
+  git config --global user.email "you@example.com";
+  git config --global user.name "travis-arq-test";
 
   # Create the new branch (branch01) and add the folder
   git init;
