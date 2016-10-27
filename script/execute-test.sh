@@ -5,8 +5,6 @@ echo "Ejecutando execute-test.sh"
 REGEX_TAG="(.*)-TESTME"
 
 #if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
-sudo apt-get install git;
-git --version;
   mvn test;
   cd /home/travis/build/nievesSopra/sauce-project/target; 
   mv surefire-reports prueba01;
@@ -26,7 +24,8 @@ git --version;
   #Merge branch01 into master branch:
   git fetch;
   git checkout -f master;
-  git merge --allow-unrelated-histories branch01;
+  #git merge --allow-unrelated-histories branch01;
+  git merge branch01;
   git push -u test-output master;
 
   #Delete the branch we created before (branch05):
