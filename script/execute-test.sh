@@ -5,6 +5,7 @@ echo "Ejecutando execute-test.sh"
 REGEX_TAG="(.*)-TESTME"
 
 #if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+sudo apt-get install git;
 git --version;
   mvn test;
   cd /home/travis/build/nievesSopra/sauce-project/target; 
