@@ -34,7 +34,7 @@ REGEX_TAG="(.*)-TESTME"
   git add -f prueba01;
   echo "Comiteando cambios"
   git commit -m "esto es una prueba";
-  echo "Guardando cambios en repositorio de github
+  echo "Guardando cambios en repositorio de github"
   git push -u test-output branch01;
 
   echo "Uniendo la rama con el maestro"
