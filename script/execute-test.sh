@@ -10,18 +10,21 @@ REGEX_TAG="(.*)-TESTME"
   mv surefire-reports prueba01;
   #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
 
+  # Create the new branch (branch01) and add the folder
   git init;
-  git add -f prueba01;
-  echo "add prueba01";
-  git commit -m "esto es una prueba";
-  echo "commit";
-  git status;
-  echo "status";
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
-  echo "remote add";
-  #git remote -v;
-  #echo "remote -v";
-  #git push test-output origin/master;
+  git checkout -b branch01;
+  git add -f prueba01;
+  git commit -m "esto es una prueba";
+  git push -u test-output branch01;
+
+  #Merge branch01 into master branch:
+  git fetch;
+  git checkout -f master;
+  git merge --allow-unrelated-histories branch01;
   git push -u test-output master;
-  echo "push";
+
+  #Delete the branch we created before (branch05):
+  #git push origin --delete branch01
+
 #fi
