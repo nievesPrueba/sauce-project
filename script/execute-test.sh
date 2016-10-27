@@ -10,6 +10,9 @@ REGEX_TAG="(.*)-TESTME"
   mv surefire-reports prueba01;
   #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
 
+  git config --global user.email "you@example.com"
+  git config --global user.name "travis-arq-test"
+
   # Create the new branch (branch01) and add the folder
   git init;
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
