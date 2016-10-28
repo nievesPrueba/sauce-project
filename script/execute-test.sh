@@ -42,7 +42,8 @@ REGEX_TAG="(.*)-TESTME"
   git fetch;
   git checkout -f master;
   #git merge --allow-unrelated-histories branch01;
-  npm run git.merge.legacy;
+  git merge branch01;
+  #npm run git.merge.legacy;
   git merge branch01;
   git push -u test-output master;
 
