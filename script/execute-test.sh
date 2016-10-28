@@ -47,6 +47,6 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   git push -u test-output master;
 
   #Delete the branch we created before (branch01):
-  git push origin --delete branch01
+  git push test-output --delete branch01
 
 fi
