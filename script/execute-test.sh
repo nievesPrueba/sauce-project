@@ -4,7 +4,11 @@ echo "Executing the execute-test.sh file"
 
 REGEX_TAG="(.*)-TESTME"
 
-#if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+
+if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+  # Save version
+  VERSION=${BASH_REMATCH[1]}-Results;
+  echo "${VERSION}"
 
   echo "Running mvn test command"
   mvn test;
@@ -12,7 +16,7 @@ REGEX_TAG="(.*)-TESTME"
   # Rename results folder
   echo "Rename results folder"
   cd /home/travis/build/nievesSopra/sauce-project/target; 
-  mv surefire-reports prueba01;
+  mv surefire-reports ${VERSION};
 
   # Configurating git (user.mail and user.name)
   echo "Configurate git"
@@ -28,9 +32,9 @@ REGEX_TAG="(.*)-TESTME"
   echo "Creat checkout of the branch"
   git checkout -b branch01;
   echo "Adding test folder to the branch"
-  git add -f prueba01;
+  git add -f ${VERSION};
   echo "Commit the changes"
-  git commit -m "esto es una prueba";
+  git commit -m "add results folder";
   echo "Saving changes in the github respository"
   git push -u test-output branch01;
 
@@ -45,4 +49,4 @@ REGEX_TAG="(.*)-TESTME"
   #Delete the branch we created before (branch01):
   #git push origin --delete branch01
 
-#fi
+fi
