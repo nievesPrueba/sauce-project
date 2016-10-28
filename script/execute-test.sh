@@ -42,10 +42,8 @@ REGEX_TAG="(.*)-TESTME"
   git fetch;
   git checkout -f master;
   #git merge --allow-unrelated-histories branch01;
-  git merge branch01;
   #npm run git.merge.legacy;
-  git merge branch01;
-  git commit -m "Merged branches"
+  git merge branch01 -m "Merged branches";
   git push -u test-output master;
 
   #Delete the branch we created before (branch05):
