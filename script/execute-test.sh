@@ -1,40 +1,37 @@
 #!/usr/bin/env bash
 
-echo "Ejecutando execute-test.sh"
+echo "Executing the execute-test.sh file"
 
 REGEX_TAG="(.*)-TESTME"
 
 #if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
-  #echo "Instalando git"
-  #sudo apt-get install git;
-  #echo "Versión de git:"
-  #git --version;
-  
-  echo "Generando tests..."
+
+  echo "Running mvn test command"
   mvn test;
   
-  echo "Renombrando pruebas"
+  # Rename results folder
+  echo "Rename results folder"
   cd /home/travis/build/nievesSopra/sauce-project/target; 
   mv surefire-reports prueba01;
-  #curl https://api.github.com/?access_token=${TRAVIS_TOKEN};
 
-  echo "Configuración de git"
+  # Configurating git (user.mail and user.name)
+  echo "Configurate git"
   git config --global user.email "you@example.com";
   git config --global user.name "travis-arq-test";
 
-  echo "Creando nueva rama"
   # Create the new branch (branch01) and add the folder
-  echo "Iniciando repositorio"
+  echo "Creating a new branch"
+  echo "Initialice the repository"
   git init;
-  echo "Añadiendo remotos"
+  echo "Add a remote repository"
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
-  echo "Creando checkout de la rama"
+  echo "Creat checkout of the branch"
   git checkout -b branch01;
-  echo "Añadiendo carpeta de pruebas a la rama"
+  echo "Adding test folder to the branch"
   git add -f prueba01;
-  echo "Comiteando cambios"
+  echo "Commit the changes"
   git commit -m "esto es una prueba";
-  echo "Guardando cambios en repositorio de github"
+  echo "Saving changes in the github respository"
   git push -u test-output branch01;
 
   echo "Uniendo la rama con el maestro"
