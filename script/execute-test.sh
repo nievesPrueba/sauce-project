@@ -34,16 +34,15 @@ REGEX_TAG="(.*)-TESTME"
   echo "Saving changes in the github respository"
   git push -u test-output branch01;
 
-  echo "Uniendo la rama con el maestro"
+  echo "Merge between the bratch and master"
   #Merge branch01 into master branch:
   git fetch;
   git checkout -f master;
   #git merge --allow-unrelated-histories branch01;
-  #npm run git.merge.legacy;
   git merge branch01 -m "Merged branches";
   git push -u test-output master;
 
-  #Delete the branch we created before (branch05):
+  #Delete the branch we created before (branch01):
   #git push origin --delete branch01
 
 #fi
