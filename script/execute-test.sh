@@ -8,7 +8,8 @@ REGEX_TAG="(.*)-TESTME"
 if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   # Save version
   VERSION=${BASH_REMATCH[1]}-Results;
-  echo "${VERSION}"
+  AUXBRANCH=${VERSION}-Branch01;
+  echo "${VERSION}-Branch01"
 
   echo "Running mvn test command"
   mvn test;
@@ -30,13 +31,13 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   echo "Add a remote repository"
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
   echo "Creat checkout of the branch"
-  git checkout -b branch01;
+  git checkout -b ${VERSION}-Branch01;
   echo "Adding test folder to the branch"
   git add -f ${VERSION};
   echo "Commit the changes"
   git commit -m "add results folder";
   echo "Saving changes in the github respository"
-  git push -u test-output branch01;
+  git push -u test-output ${VERSION}-Branch01;
 
   echo "Merge between the bratch and master"
   #Merge branch01 into master branch:
@@ -47,6 +48,6 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   git push -u test-output master;
 
   #Delete the branch we created before (branch01):
-  git push test-output --delete branch01
+  git push test-output --delete ${VERSION}-Branch01
 
 fi
