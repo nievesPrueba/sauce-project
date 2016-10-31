@@ -44,7 +44,7 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   git fetch;
   git checkout -f master;
   #git merge --allow-unrelated-histories branch01;
-  git merge branch01 -m "Merged branches";
+  git merge ${VERSION}-Branch01 -m "Merged branches";
   git push -u test-output master;
 
   #Delete the branch we created before (branch01):
