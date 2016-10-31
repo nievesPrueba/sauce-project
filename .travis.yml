@@ -20,3 +20,13 @@ addons:
     access_key: "dfcd0c77-25c6-42ba-92f3-d85e08bb036c"
     #username: "Your Sauce Labs access key"
     #access_key: "Your Sauce Labs access key"
+
+
+#env:
+#  DOCKER_COMPOSE_VERSION: 1.12.1
+  
+#before_install:
+#  - sudo rm /usr/local/bin/docker-compose
+#  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+#  - chmod +x docker-compose
+#  - sudo mv docker-compose /usr/local/bin
