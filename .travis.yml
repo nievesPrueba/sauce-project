@@ -11,7 +11,8 @@ before_deploy:
 before_script:
     - docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
    # - docker pull grupoasv/mule:latest;
-    - docker-compose up;
+    - docker-compose up &
+    ./script/bucle_check_url.sh;
 
 script:
     - chmod +x ./script/execute-test.sh;
