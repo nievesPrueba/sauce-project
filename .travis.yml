@@ -31,7 +31,8 @@ services:
   - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.12.1
+  #DOCKER_COMPOSE_VERSION: 1.12.1
+  DOCKER_COMPOSE_VERSION: 1.8.1
   
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -39,4 +40,4 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - cd /usr/local/bin
-  - ls
+  - ls -la
