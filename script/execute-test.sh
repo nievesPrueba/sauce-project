@@ -2,7 +2,8 @@
 
 echo "Executing the execute-test.sh file"
 
-REGEX_TAG="(.*)-TESTME"
+#REGEX_TAG="(.*)-TESTME"
+REGEX_TAG="(.*)-t(.*)"
 
 
 if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
