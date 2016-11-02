@@ -21,6 +21,8 @@ addons:
     #username: "Your Sauce Labs access key"
     #access_key: "Your Sauce Labs access key"
 
+services:
+  - docker
 
 env:
   DOCKER_COMPOSE_VERSION: 1.12.1
