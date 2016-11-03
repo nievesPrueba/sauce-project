@@ -98,6 +98,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
         driver.get("http://www.amazon.com/");
+        //driver.get("http://127.0.0.1:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
         driver.quit();
     }
