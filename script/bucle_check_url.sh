@@ -5,7 +5,7 @@ TIMEEND=$(date +%s)
 
 MAX_SECS=400
 
-until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) || [ "$TOTALTIME" -gt "$MAX_SECS" ]; do
+until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8088/extranet-ssff) || [ "$TOTALTIME" -gt "$MAX_SECS" ]; do
 #    printf '.'
     printf "TOTALTIME= %s" $TOTALTIME
 #    printf "TIMEEND= %s\n" $TIMEEND
