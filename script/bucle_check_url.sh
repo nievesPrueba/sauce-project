@@ -3,7 +3,7 @@
 TIMESTART=$(date +%s)
 TIMEEND=$(date +%s)
 
-until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) && [ $TOTALTIME == 300 ]; do
+until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) && [ $TOTALTIME == 330 ]; do
     printf '.'
     printf "TOTALTIME= %s" $TOTALTIME
     printf "TIMEEND= %s" $TIMEEND
