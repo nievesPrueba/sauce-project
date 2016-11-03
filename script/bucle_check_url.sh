@@ -3,7 +3,7 @@
 TIMESTART=$(date +%s)
 TIMEEND=$(date +%s)
 
-MAX_SECS=400
+MAX_SECS=500
 
 until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8088/extranet-ssff) || [ "$TOTALTIME" -gt "$MAX_SECS" ]; do
     printf '.'
