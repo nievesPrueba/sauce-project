@@ -15,5 +15,6 @@ until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) ||
 done
 
 if [ "$TOTALTIME" -gt "$MAX_SECS" ]; then
+   docker-compose stop
    exit 1
 fi
