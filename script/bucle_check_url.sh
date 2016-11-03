@@ -5,8 +5,8 @@ TIMEEND=$(date +%s)
 
 until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) || [ $TOTALTIME -gt 400 ]; do
 #    printf '.'
-#    printf "TOTALTIME= %s" $TOTALTIME
-    printf "TIMEEND= %s\n" $TIMEEND
+    printf "TOTALTIME= %s" $TOTALTIME
+#    printf "TIMEEND= %s\n" $TIMEEND
     sleep 5
     TIMEEND=$(date +%s)
     TOTALTIME=$((${TIMEEND} - ${TIMESTART}))
