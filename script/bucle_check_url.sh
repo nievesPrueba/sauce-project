@@ -16,5 +16,6 @@ done
 
 if [ "$TOTALTIME" -gt "$MAX_SECS" ]; then
    docker-compose stop
+   echo "[ERROR] - Cannot to do docker-compose up"
    exit 1
 fi
