@@ -13,3 +13,7 @@ until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8080) ||
     TIMEEND=$(date +%s)
     TOTALTIME=$((${TIMEEND} - ${TIMESTART}))
 done
+
+if [ "$TOTALTIME" -gt "$MAX_SECS" ]; then
+   exit 1
+fi
