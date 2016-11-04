@@ -24,8 +24,9 @@ script:
 
 addons:
   #sauce_connect: true
-    username: "travis-arq-testing"
-    access_key: "dfcd0c77-25c6-42ba-92f3-d85e08bb036c"
+    username: "travis-arq-testing1"
+    access_key: "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1"
+    #access_key: "dfcd0c77-25c6-42ba-92f3-d85e08bb036c"
     #username: "Your Sauce Labs access key"
     #access_key: "Your Sauce Labs access key"
 
