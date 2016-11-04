@@ -6,7 +6,7 @@ echo "Executing the execute-test.sh file"
 REGEX_TAG="(.*)-t(.*)"
 
 
-if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+#if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   # Save version
   VERSION=${BASH_REMATCH[1]}-Results;
   AUXBRANCH=${VERSION}-Branch01;
@@ -51,4 +51,4 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   #Delete the branch we created before (branch01):
   git push test-output --delete ${VERSION}-Branch01
 
-fi
+#fi
