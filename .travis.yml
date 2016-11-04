@@ -17,6 +17,8 @@ before_script:
 
 script:
     - docker ps -a
+    - docker ps -q
+    - docker ps -a | grep grupoasv | awk '{print $1 }'
     - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 #    - chmod +x ./script/execute-test.sh;
 #    - ./script/execute-test.sh
