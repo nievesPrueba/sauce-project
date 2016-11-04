@@ -12,7 +12,11 @@ before_script:
     - docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
    # - docker pull grupoasv/mule:latest;
     - chmod +x ./script/bucle_check_url.sh;
-    - docker-compose up & ./script/bucle_check_url.sh;
+   # - docker-compose up & ./script/bucle_check_url.sh;
+    - ifconfig;
+    - IPADDR=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
+    - echo ${IPADDR}
+    - exit 1;
 
 script:
     - chmod +x ./script/execute-test.sh;
