@@ -16,8 +16,9 @@ before_script:
     - ifconfig;
 
 script:
-    - chmod +x ./script/execute-test.sh;
-    - ./script/execute-test.sh
+    - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+#    - chmod +x ./script/execute-test.sh;
+#    - ./script/execute-test.sh
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
