@@ -16,6 +16,7 @@ before_script:
     - ifconfig;
 
 script:
+    - echo "CID del último contenedor levantado"
     - docker ps -q
     - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 #    - chmod +x ./script/execute-test.sh;
