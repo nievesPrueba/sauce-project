@@ -32,7 +32,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link com.saucelabs.common.SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing", "dfcd0c77-25c6-42ba-92f3-d85e08bb036c");
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing1", "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1");
+    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing", "dfcd0c77-25c6-42ba-92f3-d85e08bb036c");
 
     /**
      * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
@@ -97,9 +98,11 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
-        driver.get("http://www.amazon.com/");
-        //driver.get("http://127.0.0.1:8088/extranet-ssff");
-        assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
+//        driver.get("http://www.amazon.com/");
+        // la url travis - docker http://127.0.0.1:8088/extranet-ssff
+        driver.get("http://192.168.99.100:8088/extranet-ssff");
+//        assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
+        assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         driver.quit();
     }
 
