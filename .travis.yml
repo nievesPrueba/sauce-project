@@ -17,8 +17,10 @@ before_script:
 
 script:
     - CONTAINER_ID=`docker ps -a | grep grupoasv | awk '{print $1 }'`
-    - CONTAINER_IP=`docker inspect --format '{{ .NetworkSettings.Networks.sauceproject_default.IPAddress }}' ${CONTAINER_ID}`
-    - echo "La IP del contenedor ${CONTAINER_ID} (contenedor web) es ${CONTAINER_IP}"
+    - CONTAINER_NETWORK_MODE=`docker inspect --format '{{ .HostConfig.NetworkMode }}' ${CONTAINER_ID}`
+    - CONTAINER_IP_TXT="{{ .NetworkSettings.Networks.${CONTAINER_NETWORK_MODE}.IPAddress }}"
+    - CONTAINER_IP=`docker inspect --format "${CONATINER_IP_TXT}" ${CONTAINER_ID}`
+    - echo "La IP del contenedor ${CONTAINER_ID} (contenedor de ${CONTAINER_NETWORK_MODE}) es ${CONTAINER_IP}"
 #    - chmod +x ./script/execute-test.sh;
 #    - ./script/execute-test.sh
 
