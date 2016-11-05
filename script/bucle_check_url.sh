@@ -5,17 +5,20 @@ TIMEEND=$(date +%s)
 
 MAX_SECS=600
 
-until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8088/extranet-ssff) || [ "$TOTALTIME" -gt "$MAX_SECS" ]; do
+until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8088/extranet-ssff); do
     printf '.'
-#    printf "TOTALTIME= %s" $TOTALTIME
-#    printf "TIMEEND= %s\n" $TIMEEND
+
+    # Esperamos 5 segundos
     sleep 5
+
+    # Se calcula el tiempo total esperado
     TIMEEND=$(date +%s)
     TOTALTIME=$((${TIMEEND} - ${TIMESTART}))
-done
 
-if [ "$TOTALTIME" -gt "$MAX_SECS" ]; then
-   docker-compose stop
-   echo "[ERROR] - Cannot to load url"
-   exit 1
-fi
+    # Si el tiempo total esperado supera un umbral, posiblemente haya habido un error
+    if [ "$TOTALTIME" -gt "$MAX_SECS" ]; then
+        docker-compose stop
+        echo "[ERROR] - Cannot to load url"
+        exit 1
+    fi
+done
