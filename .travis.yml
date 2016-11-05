@@ -16,13 +16,9 @@ before_script:
     - ifconfig;
 
 script:
-    - docker ps -a
-#    - docker ps -q
     - CONTAINER_ID=`docker ps -a | grep grupoasv | awk '{print $1 }'`
-    - echo "El ID del contenedor es ${CONTAINER_ID}"
-    - docker inspect --format '{{ .NetworkSettings.Networks.sauceproject_default.IPAddress }}' ${CONTAINER_ID}
-#    - docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CONTAINER_ID}
-#    - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+    - CONTAINER_IP=`docker inspect --format '{{ .NetworkSettings.Networks.sauceproject_default.IPAddress }}' ${CONTAINER_ID}`
+    - echo "La IP del contenedor ${CONTAINER_ID} (contenedor web) es: ${CONATINER_IP}"
 #    - chmod +x ./script/execute-test.sh;
 #    - ./script/execute-test.sh
 
