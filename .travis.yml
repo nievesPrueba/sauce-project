@@ -20,7 +20,7 @@ script:
 #    - docker ps -q
     - CONTAINER_ID=`docker ps -a | grep grupoasv | awk '{print $1 }'`
     - echo "El ID del contenedor es ${CONTAINER_ID}"
-    - docker inspect ${CONTAINER_ID}
+    - docker inspect --format '{{ .NetworkSettings.Networks.sauceproject_default.IPAddress }}' ${CONTAINER_ID}
 #    - docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CONTAINER_ID}
 #    - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
 #    - chmod +x ./script/execute-test.sh;
