@@ -101,7 +101,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
        // driver.get("http://www.amazon.com/");
         //assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
         // la url travis - docker http://127.0.0.1:8088/extranet-ssff
-        driver.get("http://172.18.0.1:8088/extranet-ssff");
+        driver.get("http://172.18.0.3:8088/extranet-ssff");
         //driver.get("http://192.168.99.100:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
