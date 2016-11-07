@@ -12,27 +12,12 @@ before_script:
    # - docker pull grupoasv/mule:latest;
     - chmod +x ./script/bucle_check_url.sh;
     - docker-compose up & ./script/bucle_check_url.sh;
-    - ifconfig;
 
 script:
-#    - CONTAINER_ID=`docker ps -a | grep grupoasv | awk '{print $1 }'`
-#    - CONTAINER_NETWORK_MODE=`docker inspect --format '{{ .HostConfig.NetworkMode }}' ${CONTAINER_ID}`
-#    - CONTAINER_IP_TXT="{{ .NetworkSettings.Networks.${CONTAINER_NETWORK_MODE}.IPAddress }}"
-#    - CONTAINER_IP=`docker inspect --format "${CONTAINER_IP_TXT}" ${CONTAINER_ID}`
-#    - echo "La IP del contenedor ${CONTAINER_ID} (contenedor de ${CONTAINER_NETWORK_MODE}) es ${CONTAINER_IP}"
-#    - ETH0_IP=`ifconfig | grep -A1 'eth0' | grep 'inet addr:' | cut -d":" -f2 | awk '{ print $1 }'`
-#    - echo "La IP de eth0 es ${ETH0_IP}"
-#    - curl --compressed --trace-ascii - http://${CONTAINER_IP}:8088/extranet-ssff
-#    - curl --location --compressed --trace-ascii - http://${ETH0_IP}:8088/extranet-ssff
-#    - curl --compressed --trace-ascii - http://127.0.0.1:8088/extranet-ssff
-    - chmod +x ./script/execute-test.sh;
-    - ./script/execute-test.sh localhost
-#    - ./script/execute-test.sh ${ETH0_IP}
-#    - LXCBR_IP=`ifconfig | grep -A1 'lxcbr0' | grep 'inet addr:' | cut -d":" -f2 | awk '{ print $1 }'`
-#    - echo "La IP de lxcbr0 es ${LXCBR_IP}"
-#    - curl --location --compressed --trace-ascii - http://${LXCBR_IP}:8088/extranet-ssff/
-#    - ./script/execute-test.sh ${LXCBR_IP}
-
+    - echo "El job de Travis es: ${TRAVIS_JOB_NUMBER}";
+#    - chmod +x ./script/execute-test.sh;
+#    - ./script/execute-test.sh localhost
+    - mvn test -Denv.IPTRAVIS=http://localhost -Denv.TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER};
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
