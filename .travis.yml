@@ -29,6 +29,7 @@ script:
     - ./script/execute-test.sh ${ETH0_IP}
     - LXCBR_IP=`ifconfig | grep -A1 'lxcbr0' | grep 'inet addr:' | cut -d":" -f2 | awk '{ print $1 }'`
     - echo "La IP de lxcbr0 es ${LXCBR_IP}"
+    - curl --location --compressed --trace-ascii - http://${LXCBR_IP}:8088/extranet-ssff/
     - ./script/execute-test.sh ${LXCBR_IP}
 
 
