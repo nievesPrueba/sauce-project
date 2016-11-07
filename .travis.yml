@@ -20,12 +20,12 @@ script:
     - CONTAINER_IP_TXT="{{ .NetworkSettings.Networks.${CONTAINER_NETWORK_MODE}.IPAddress }}"
     - CONTAINER_IP=`docker inspect --format "${CONTAINER_IP_TXT}" ${CONTAINER_ID}`
     - echo "La IP del contenedor ${CONTAINER_ID} (contenedor de ${CONTAINER_NETWORK_MODE}) es ${CONTAINER_IP}"
-    - ETH0_IP=`ifconfig | grep -A1 'eth0' | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1 }'`
+    - ETH0_IP=`ifconfig | grep -A1 'eth0' | grep 'inet addr:' | cut -d":" -f2 | awk '{ print $1 }'`
     - echo "La IP de eth0 es ${ETH0_IP}"
     - curl http://${CONTAINER_IP}:8088/extranet-ssff
     - curl http://${ETH0_IP}:8088/extranet-ssff
     - chmod +x ./script/execute-test.sh;
-    - ./script/execute-test.sh
+#    - ./script/execute-test.sh
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
