@@ -14,7 +14,7 @@ before_script:
     - docker-compose up & ./script/bucle_check_url.sh;
 
 script:
-    - echo "El job de Travis es: ${TRAVIS_JOB_NUMBER}";
+    - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
 #    - chmod +x ./script/execute-test.sh;
 #    - ./script/execute-test.sh localhost
     - mvn test -Denv.IPTRAVIS=http://localhost -Denv.TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER};
