@@ -13,7 +13,7 @@ REGEX_TAG="(.*)-t(.*)"
   echo "${VERSION}-Branch01"
 
   echo "Running mvn test command"
-  mvn test -Denv.IPTRAVIS=http://${ETH0_IP};
+  mvn test -Denv.IPTRAVIS=http://$1;
   
   # Rename results folder
   echo "Rename results folder"
