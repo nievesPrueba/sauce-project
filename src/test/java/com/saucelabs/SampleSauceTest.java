@@ -95,13 +95,15 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param os Represents the operating system to be used as part of the test run.
      * @throws Exception if an error occurs during the running of the test
      */
+    @Parameters("iptravis")
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
        // driver.get("http://www.amazon.com/");
         //assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
         // la url travis - docker http://127.0.0.1:8088/extranet-ssff
-        driver.get("http://10.128.0.19:8088/extranet-ssff");
+        //driver.get("http://10.128.0.19:8088/extranet-ssff");
+        driver.get(getIPTravis() + ":8088/extranet-ssff");
         //driver.get("http://192.168.99.100:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
@@ -124,6 +126,13 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         return sessionId.get();
     }
 
+    /**
+	 * <method>getIPTravis</method> returns the IP where the application runs.
+	 */	
+	public String getIPTravis() {
+		return System.getProperty("iptravis");
+	}
+    
     /**
      *
      * @return the {@link SauceOnDemandAuthentication} instance containing the Sauce username/access key
