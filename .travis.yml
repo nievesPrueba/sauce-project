@@ -25,6 +25,7 @@ script:
     - curl --trace-ascii - http://${CONTAINER_IP}:8088/extranet-ssff
     - curl --trace-ascii - http://${ETH0_IP}:8088/extranet-ssff
     - curl --trace-ascii - http://127.0.0.1:8088/extranet-ssff
+    - curl --trace-ascii - http://127.0.0.1/
     - chmod +x ./script/execute-test.sh;
 #    - ./script/execute-test.sh
 
