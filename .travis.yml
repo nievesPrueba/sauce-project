@@ -27,7 +27,7 @@ script:
     - curl --trace-ascii - http://127.0.0.1:8088/extranet-ssff
     - curl --trace-ascii - http://127.0.0.1/
     - chmod +x ./script/execute-test.sh;
-    - ./script/execute-test.sh http://${ETH0_IP}
+    - ./script/execute-test.sh ${ETH0_IP}
 
 #after_success:
 #  - echo "${TRAVIS_TAG}"
