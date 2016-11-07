@@ -56,7 +56,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
                 new Object[]{"internet explorer", "11", "Windows 8.1"},
-                new Object[]{"safari", "6", "OSX 10.8"},
+                //new Object[]{"safari", "6", "OSX 10.8"},
         };
     }
 
@@ -82,7 +82,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", "Sauce Sample Test");
         webDriver.set(new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:4443/wd/hub"),
                 capabilities));
         sessionId.set(((RemoteWebDriver) getWebDriver()).getSessionId().toString());
         return webDriver.get();
