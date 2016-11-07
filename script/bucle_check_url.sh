@@ -5,7 +5,7 @@ TIMEEND=$(date +%s)
 
 MAX_SECS=600
 
-until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8088/extranet-ssff); do
+until $(curl --output /dev/null --silent --head --fail --compressed http://127.0.0.1:8088/extranet-ssff); do
     printf '.'
 
     # Esperamos 5 segundos
