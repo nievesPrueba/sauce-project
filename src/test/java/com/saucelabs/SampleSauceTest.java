@@ -83,7 +83,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", "Sauce Sample Test");
 //	capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-	capabilities.setCapability("tunnel-identifier", getTravisJobNumber());
+	capabilities.setCapability("tunnel-identifier", System.getProperty("travisjob"));
 	//capabilities.setCapability("tunnel-identifier", System.getProperty("TRAVIS_JOB_NUMBER"));
 	capabilities.setCapability("username", authentication.getUsername());
 	capabilities.setCapability("accessKey", authentication.getAccessKey());
@@ -104,7 +104,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param os Represents the operating system to be used as part of the test run.
      * @throws Exception if an error occurs during the running of the test
      */
-    @Parameters({"iptravis", "travisjob"})
+//    @Parameters({"iptravis", "travisjob"})
+    @Parameters("travisjob")
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
@@ -112,7 +113,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         //assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
         // la url travis - docker http://127.0.0.1:8088/extranet-ssff
         //driver.get("http://10.128.0.19:8088/extranet-ssff");
-        driver.get(getIPTravis() + ":8088/extranet-ssff/login.html#/login");
+//	driver.get(getIPTravis() + ":8088/extranet-ssff/login.html#/login");
+        driver.get("http://localhost:8088/extranet-ssff/login.html#/login");
 	driver.wait(10);
         //driver.get("http://192.168.99.100:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
