@@ -127,7 +127,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
 	WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.className("btn btn-warning btn-lg btn-block"))); 
+        driver.manage().timeouts().implicitlyWait(DEFAULT_WAIT, TimeUnit.SECONDS);
         assertTrue(isPresentAndVisible(By.className("btn btn-warning btn-lg btn-block"), driver), "[ERROR] - No visible el botón Inicio Sesión");    
 	
         driver.quit();
