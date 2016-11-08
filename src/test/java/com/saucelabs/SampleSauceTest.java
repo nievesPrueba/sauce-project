@@ -127,12 +127,19 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
 	WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	 
-	    //<button type="submit" class="btn btn-warning btn-lg btn-block" ng-disabled="loading">Iniciar sesión</button>
 	WebElement button = driver.findElement(By.xpath(".//button[@class='btn btn-warning btn-lg btn-block']"));
-		    
-        assertTrue(button.isDisplayed(), "[ERROR] - No visible el botón Inicio Sesión");    
+	assertTrue(button.isDisplayed(), "[ERROR] - No visible el botón Inicio Sesión");
+	    
+	WebElement nameUserTextBox = driver.findElement(By.xpath(".//input[@placeholder='Nombre de usuario']"));
+        WebElement pwdTextBox = driver.findElement(By.xpath(".//input[@placeholder='Contraseña']"));
+        
+        nameUserTextBox.sendKeys("user01");
+        pwdTextBox.sendKeys("password");
+	    
+	button.click();
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	
         driver.quit();
     }
