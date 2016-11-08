@@ -115,7 +115,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         //driver.get("http://10.128.0.19:8088/extranet-ssff");
 //	driver.get(getIPTravis() + ":8088/extranet-ssff/login.html#/login");
         driver.get("http://localhost:8088/extranet-ssff/login.html#/login");
-	driver.wait(10);
+	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	//driver.wait(10);
         //driver.get("http://192.168.99.100:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
