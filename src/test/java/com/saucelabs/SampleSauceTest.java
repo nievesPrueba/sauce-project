@@ -83,6 +83,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability("name", "Sauce Sample Test");
 //	capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
 	capabilities.setCapability("tunnel-identifier", System.getProperty("TRAVIS_JOB_NUMBER"));
+	capabilities.setCapability("username", authentication.getUsername());
+	capabilities.setCapability("accessKey", authentication.getAccessKey());
         webDriver.set(new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:4443/wd/hub"),
                 capabilities));
