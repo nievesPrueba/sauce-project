@@ -82,7 +82,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", "Sauce Sample Test");
 //	capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-	capabilities.setCapability("tunnel-identifier", System.getProperty("TRAVIS_JOB_NUMBER"));
+	capabilities.setCapability("tunnel-identifier", getTravisJobNumber());
+	//capabilities.setCapability("tunnel-identifier", System.getProperty("TRAVIS_JOB_NUMBER"));
 	capabilities.setCapability("username", authentication.getUsername());
 	capabilities.setCapability("accessKey", authentication.getAccessKey());
         webDriver.set(new RemoteWebDriver(
@@ -100,7 +101,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param os Represents the operating system to be used as part of the test run.
      * @throws Exception if an error occurs during the running of the test
      */
-    @Parameters("iptravis")
+    @Parameters("iptravis", "travisjob")
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
@@ -133,12 +134,18 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     }
 
     /**
-	 * <method>getIPTravis</method> returns the IP where the application runs.
-	 */	
-	public String getIPTravis() {
-		return System.getProperty("iptravis");
-	}
-    
+     * <method>getIPTravis</method> returns the IP where the application runs.
+     */	
+     public String getIPTravis() {
+	return System.getProperty("iptravis");
+     }
+	
+    /**
+     * <method>getTravisJobNumber</method> returns the current Travis Job number.
+     */	
+     public String getTravisJobNumber() {
+	return System.getProperty("travisjob");
+     }    
     /**
      *
      * @return the {@link SauceOnDemandAuthentication} instance containing the Sauce username/access key
