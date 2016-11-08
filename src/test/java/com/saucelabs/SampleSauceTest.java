@@ -90,7 +90,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
 	System.out.println("username: "+capabilities.getCapability("username"));
 	System.out.println("accessKey: "+capabilities.getCapability("accessKey"));
         webDriver.set(new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:4443/wd/hub"),
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
                 capabilities));
         sessionId.set(((RemoteWebDriver) getWebDriver()).getSessionId().toString());
         return webDriver.get();
