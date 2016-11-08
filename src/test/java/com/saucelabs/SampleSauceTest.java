@@ -101,7 +101,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param os Represents the operating system to be used as part of the test run.
      * @throws Exception if an error occurs during the running of the test
      */
-    @Parameters("iptravis", "travisjob")
+    @Parameters({"iptravis", "travisjob"})
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
