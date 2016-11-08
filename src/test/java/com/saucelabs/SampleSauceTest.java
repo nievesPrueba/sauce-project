@@ -4,11 +4,15 @@ import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
 import com.saucelabs.testng.SauceOnDemandTestListener;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -17,11 +21,13 @@ import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 /**
@@ -29,6 +35,8 @@ import static org.testng.Assert.assertEquals;
  */
 @Listeners({SauceOnDemandTestListener.class})
 public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnDemandAuthenticationProvider {
+    
+     public static final int DEFAULT_WAIT = 60;
 
     /**
      * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
@@ -112,15 +120,15 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         WebDriver driver = createDriver(browser, version, os);
        // driver.get("http://www.amazon.com/");
         //assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
-        // la url travis - docker http://127.0.0.1:8088/extranet-ssff
-        //driver.get("http://10.128.0.19:8088/extranet-ssff");
 //	driver.get(getIPTravis() + ":8088/extranet-ssff/login.html#/login");
         driver.get("http://localhost:8088/extranet-ssff/login.html#/login");
 	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	//driver.wait(10);
-        //driver.get("http://192.168.99.100:8088/extranet-ssff");
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
+	WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT);
+        wait.until(ExpectedConditions.elementToBeClickable(By.className("btn btn-warning btn-lg btn-block"))); 
+        assertTrue(isPresentAndVisible(By.className("btn btn-warning btn-lg btn-block"), driver), "[ERROR] - No visible el botón Inicio Sesión");    
+	
         driver.quit();
     }
 
@@ -161,5 +169,30 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     public SauceOnDemandAuthentication getAuthentication() {
         return authentication;
     }
+	
+
+    /**
+     * <method>isPresentAndVisible</method> Method that finds all elements within the current page and returns a List of the elements found.
+     * returns true if all the elements of the list are displayed or false if they are not.
+     * 
+     * @param By locator
+     * @return boolean
+     */
+	public boolean isPresentAndVisible(By locator, WebDriver driver) {
+		// find all elements within the current page and returns a List of the elements found.
+		List<WebElement> elements = driver.findElements(locator);
+		if(elements.size() > 0) {
+			//loop throught the list of elements
+			for(WebElement elem : elements) {
+				//if the first element of the list is not displayed it returns false
+				if(!elem.isDisplayed()) {
+					return false; 
+				}
+			}
+			return true;
+		}
+		// returns false if the list of elements is empty.
+		return false;
+	}	
 }
 
