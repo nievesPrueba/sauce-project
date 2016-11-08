@@ -83,7 +83,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", "Sauce Sample Test");
 //	capabilities.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
-	//capabilities.setCapability("tunnel-identifier", System.getProperty("travisjob"));
+	capabilities.setCapability("tunnel-identifier", System.getProperty("travisjob"));
 	//capabilities.setCapability("tunnel-identifier", System.getProperty("TRAVIS_JOB_NUMBER"));
 	capabilities.setCapability("username", authentication.getUsername());
 	capabilities.setCapability("accessKey", authentication.getAccessKey());
