@@ -15,22 +15,16 @@ before_script:
 
 script:
     - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
-#    - chmod +x ./script/execute-test.sh;
-#    - ./script/execute-test.sh localhost
+    - chmod +x ./script/execute-test.sh;
+    - ./script/execute-test.sh localhost
 #    - mvn test -Denv.IPTRAVIS=http://localhost -Denv.TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER};
     - mvn test -Denv.TRAVIS_JOB_NUMBER=${TRAVIS_JOB_NUMBER};
-
-#after_success:
-#  - echo "${TRAVIS_TAG}"
-#  - if [[ "${TRAVIS_TAG}" =~ (.*)-TESTME ]]; then mvn test; fi
 
 addons:
   sauce_connect:
     username: "travis-arq-testing1"
     access_key: "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1"
     #access_key: "dfcd0c77-25c6-42ba-92f3-d85e08bb036c"
-    #username: "Your Sauce Labs access key"
-    #access_key: "Your Sauce Labs access key"
 
 services:
   - docker
