@@ -7,8 +7,12 @@ REGEX_TAG="(.*)-TESTME"
 
 
 if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+  # Get Application repository Name
+  REPO_NAME=$(echo ${TRAVIS_REPO_SLUG} | cut -f2 -d/)
+  echo "REPO_NAME=${REPO_NAME}"
+  
   # Save version
-  VERSION=${BASH_REMATCH[1]}-Results;
+  VERSION=${REPO_NAME}-${BASH_REMATCH[1]}-Results;
   AUXBRANCH=${VERSION}-Branch01;
   echo "${VERSION}-Branch01"
 
