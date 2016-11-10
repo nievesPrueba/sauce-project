@@ -17,20 +17,20 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   
   # Rename results folder
   echo "Rename results folder"
-  cd /home/travis/build/nievesSopra/sauce-project/target; 
+  cd /home/travis/build/${GITHUB_USER}/sauce-project/target; 
   mv surefire-reports ${VERSION};
 
   # Configurating git (user.mail and user.name)
   echo "Configurate git"
   git config --global user.email "you@example.com";
-  git config --global user.name "travis-arq-test";
+  git config --global user.name "${GITHUB_USER}";
 
   # Create the new branch (branch01) and add the folder
   echo "Creating a new branch"
   echo "Initialice the repository"
   git init;
   echo "Add a remote repository"
-  git remote add test-output https://${TRAVIS_TOKEN}@github.com/nievesSopra/hello-world.git;
+  git remote add test-output https://${TRAVIS_TOKEN}@github.com/${GITHUB_USER}/hello-world.git;
   echo "Creat checkout of the branch"
   git checkout -b ${VERSION}-Branch01;
   echo "Adding test folder to the branch"
