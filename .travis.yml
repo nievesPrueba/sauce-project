@@ -20,8 +20,8 @@ script:
 
 addons:
   sauce_connect:
-    username: "travis-arq-testing1"
-    access_key: "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1"
+    username: "${SAUCELABS_USER}"
+    access_key: "${SAUCELABS_ACCESS_KEY}"
 
 services:
   - docker
