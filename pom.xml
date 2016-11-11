@@ -71,7 +71,7 @@
                 		<iptravis>${env.IPTRAVIS}</iptravis>
 			    		<travisjob>${env.TRAVIS_JOB_NUMBER}</travisjob>
 			    		<userSauceLabs>${env.SAUCELABS_USER}</userSauceLabs>
-			    		<accessKeySauceLabs>${env.SAUCELABS_ACCESS_KEY</accessKeySauceLabs>
+			    		<accessKeySauceLabs>${env.SAUCELABS_ACCESS_KEY}</accessKeySauceLabs>
                 	</systemPropertyVariables>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                 </configuration>
