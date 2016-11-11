@@ -67,10 +67,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-		    <systemPropertyVariables>
-                        <iptravis>${env.IPTRAVIS}</iptravis>
-			    <travisjob>${env.TRAVIS_JOB_NUMBER}</travisjob>
-                    </systemPropertyVariables>
+		    		<systemPropertyVariables>
+                		<iptravis>${env.IPTRAVIS}</iptravis>
+			    		<travisjob>${env.TRAVIS_JOB_NUMBER}</travisjob>
+			    		<userSauceLabs>${env.SAUCELABS_USER}</userSauceLabs>
+			    		<accessKeySauceLabs>${env.SAUCELABS_ACCESS_KEY</accessKeySauceLabs>
+                	</systemPropertyVariables>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                 </configuration>
             </plugin>

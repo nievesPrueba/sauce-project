@@ -43,9 +43,9 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link com.saucelabs.common.SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing1", "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1");
-    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing", "dfcd0c77-25c6-42ba-92f3-d85e08bb036c");
-
+//    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("travis-arq-testing1", "0c5a2380-863d-45c7-b6d0-2c55d6d93ba1");
+     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(getUserSauceLabs(), getAccessKeySauceLabs());
+     
     /**
      * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
      */
@@ -114,32 +114,28 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * @param os Represents the operating system to be used as part of the test run.
      * @throws Exception if an error occurs during the running of the test
      */
-//    @Parameters({"iptravis", "travisjob"})
-    @Parameters("travisjob")
+    @Parameters({"userSauceLabs", "accessKeySauceLabs"})
     @Test(dataProvider = "hardCodedBrowsers")
     public void webDriver(String browser, String version, String os) throws Exception {
         WebDriver driver = createDriver(browser, version, os);
-       // driver.get("http://www.amazon.com/");
-        //assertEquals(driver.getTitle(), "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more");
-//	driver.get(getIPTravis() + ":8088/extranet-ssff/login.html#/login");
         driver.get("http://localhost:8088/extranet-ssff/login.html#/login");
-	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         assertEquals(driver.getTitle(), "Portal Clientes Grupo ASV Servicios Funerarios");
         
-	WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT);
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 	 
-	WebElement button = driver.findElement(By.xpath(".//button[@class='btn btn-warning btn-lg btn-block']"));
-	assertTrue(button.isDisplayed(), "[ERROR] - No visible el botón Inicio Sesión");
+        WebElement button = driver.findElement(By.xpath(".//button[@class='btn btn-warning btn-lg btn-block']"));
+        assertTrue(button.isDisplayed(), "[ERROR] - No visible el botón Inicio Sesión");
 	    
-	WebElement nameUserTextBox = driver.findElement(By.xpath(".//input[@placeholder='Nombre de usuario']"));
+        WebElement nameUserTextBox = driver.findElement(By.xpath(".//input[@placeholder='Nombre de usuario']"));
         WebElement pwdTextBox = driver.findElement(By.xpath(".//input[@placeholder='Contraseña']"));
         
         nameUserTextBox.sendKeys("user01");
         pwdTextBox.sendKeys("password");
 	    
-	button.click();
-	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        button.click();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	
         driver.quit();
     }
@@ -163,16 +159,25 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     /**
      * <method>getIPTravis</method> returns the IP where the application runs.
      */	
-     public String getIPTravis() {
-	return System.getProperty("iptravis");
-     }
+//     public String getIPTravis() {
+//    	 return System.getProperty("iptravis");
+//     }
 	
     /**
      * <method>getTravisJobNumber</method> returns the current Travis Job number.
      */	
      public String getTravisJobNumber() {
-	return System.getProperty("travisjob");
-     }    
+    	 return System.getProperty("travisjob");
+     }
+     
+     public String getUserSauceLabs() {
+    	 return System.getProperty("userSauceLabs");
+     }
+     
+     public String getAccessKeySauceLabs() {
+    	 return System.getProperty("accessKeySauceLabs");
+     }
+     
     /**
      *
      * @return the {@link SauceOnDemandAuthentication} instance containing the Sauce username/access key
