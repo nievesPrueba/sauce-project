@@ -17,7 +17,7 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   echo "${VERSION}-Branch01"
 
   echo "Running mvn test command"
-  mvn test -Denv.IPTRAVIS=http://$1;
+  mvn test -Denv.IPTRAVIS=http://$1 -Denv.SAUCELABS_USER=${SAUCELABS_USER} -Denv.SAUCELABS_ACCESS_KEY=${SAUCELABS_ACCESS_KEY};
   
   # Rename results folder
   echo "Rename results folder"
