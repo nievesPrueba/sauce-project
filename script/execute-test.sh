@@ -23,8 +23,8 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   echo "Rename results folder"
   cd /home/travis/build/${GITHUB_USER}/sauce-project/target;
   mv surefire-reports ${VERSION};
-  #mkdir ${REPO_NAME};
-  #mv surefire-reports ${REPO_NAME}/${VERSION};
+  mkdir ${REPO_NAME};
+  mv surefire-reports ${REPO_NAME}/${VERSION};
 
   # Configurating git (user.mail and user.name)
   echo "Configurate git"
@@ -38,23 +38,28 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   echo "Add a remote repository"
   git remote add test-output https://${TRAVIS_TOKEN}@github.com/${GITHUB_USER}/hello-world.git;
   echo "Creat checkout of the branch"
-  git checkout -b ${VERSION}-Branch01;
+  git checkout -b ${REPO_NAME}-Branch01;
+  #git checkout -b ${VERSION}-Branch01;
   echo "Adding test folder to the branch"
-  git add -f ${VERSION};
+  git add -f ${REPO_NAME};
+  #git add -f ${VERSION};
   echo "Commit the changes"
   git commit -m "add results folder";
   echo "Saving changes in the github respository"
-  git push -u test-output ${VERSION}-Branch01;
+  git push -u test-output ${REPO_NAME}-Branch01;
+  #git push -u test-output ${VERSION}-Branch01;
 
-  echo "Merge between the bratch and master"
+  echo "Merge between the branch and master"
   #Merge branch01 into master branch:
   git fetch;
   git checkout -f master;
   #git merge --allow-unrelated-histories branch01;
-  git merge ${VERSION}-Branch01 -m "Merged branches";
+  git merge ${REPO_NAME}-Branch01 -m "Merged branches";
+  #git merge ${VERSION}-Branch01 -m "Merged branches";
   git push -u test-output master;
 
   #Delete the branch we created before (branch01):
-  git push test-output --delete ${VERSION}-Branch01
+  git push test-output --delete ${REPO_NAME}-Branch01
+  #git push test-output --delete ${VERSION}-Branch01
 
 fi
