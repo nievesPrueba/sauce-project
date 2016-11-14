@@ -6,10 +6,7 @@ REGEX_TAG="(.*)-TESTME"
 #REGEX_TAG="(.*)-t(.*)"
 
 
-if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
-  # Before_script:
-    - docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
-    - chmod +x ./script/bucle_check_url.sh;
-    - docker-compose up & ./script/bucle_check_url.sh;
-
+if ! [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+  - echo "[WARNING] - Not displayed the docker-compose package, the application is down. Not included -TESTME tag.";
+  - exit 0;
 fi
