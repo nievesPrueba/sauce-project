@@ -6,7 +6,9 @@ REGEX_TAG="(.*)-TESTME"
 #REGEX_TAG="(.*)-t(.*)"
 
 # Tag condition
-if ! [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
-  - echo "[WARNING] - Not installed the docker-compose package. Not included -TESTME tag.";
-  - exit 0;
+if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
+  sudo rm /usr/local/bin/docker-compose
+  curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  chmod +x docker-compose
+  sudo mv docker-compose /usr/local/bin
 fi
