@@ -22,9 +22,9 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   # Rename results folder
   echo "Rename results folder"
   cd /home/travis/build/${GITHUB_USER}/sauce-project/target;
-  #mv surefire-reports ${VERSION};
-  mkdir ${REPO_NAME};
-  mv surefire-reports ${REPO_NAME}/${VERSION};
+  mv surefire-reports ${VERSION};
+  #mkdir ${REPO_NAME};
+  #mv surefire-reports ${REPO_NAME}/${VERSION};
 
   # Configurating git (user.mail and user.name)
   echo "Configurate git"
