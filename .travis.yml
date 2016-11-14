@@ -8,10 +8,10 @@ before_deploy:
 
 
 before_script:
-    - docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
-   # - docker pull grupoasv/mule:latest;
-    - chmod +x ./script/bucle_check_url.sh;
-    - docker-compose up & ./script/bucle_check_url.sh;
+    - ./script/before_script.sh
+    #- docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD"
+    #- chmod +x ./script/bucle_check_url.sh;
+    #- docker-compose up & ./script/bucle_check_url.sh;
 
 script:
     - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
@@ -30,9 +30,9 @@ env:
   DOCKER_COMPOSE_VERSION: 1.8.1
   
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  #- cd /usr/local/bin
-  #- ls -la
+  - ./script/before_install.sh
+  #- sudo rm /usr/local/bin/docker-compose
+  #- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  #- chmod +x docker-compose
+  #- sudo mv docker-compose /usr/local/bin
+
