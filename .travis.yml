@@ -10,7 +10,7 @@ before_deploy:
 before_script:
     - chmod +x ./script/before_script.sh
     - ./script/before_script.sh;
-	- docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD";
+    - docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD";
     - chmod +x ./script/bucle_check_url.sh;
     - docker-compose up & ./script/bucle_check_url.sh;
 
