@@ -13,6 +13,7 @@ services:
     image: grupoasv/mule
     ports:
       - "8088:8088"
+      - "8090:8090"
       - "5005:5005"
     depends_on:
       - mysql
@@ -28,5 +29,7 @@ services:
       - MYSQL_URL=jdbc:mysql://mysql:3306/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root001
-      - ESB_VERSION_EXTRANETSSFF=1.4.0
+      - ESB_VERSION_EXTRANETSSFF=1.3.0
       - ESB_REPOSITORY_EXTRANETSSFF=Extranet-SSFF
+      - ESB_VERSION_QUOTE_CENTER=1.3.0
+      - ESB_REPOSITORY_QUOTE_CENTER=Quote-Center
