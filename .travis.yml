@@ -7,9 +7,13 @@ before_deploy:
       tags: true
 
 
-before_script:
-    - chmod +x ./script/before_script.sh
-    - ./script/before_script.sh;
+#before_script:
+   # - chmod +x ./script/before_script.sh
+   # - ./script/before_script.sh;
+
+before_install:
+  - chmod +x ./script/before_install.sh;
+  - ./script/before_install.sh
 
 script:
     - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
@@ -26,8 +30,4 @@ services:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.8.1
-  
-before_install:
-  - chmod +x ./script/before_install.sh;
-  - ./script/before_install.sh
-
+ 
