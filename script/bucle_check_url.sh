@@ -3,7 +3,7 @@
 TIMESTART=$(date +%s)
 TIMEEND=$(date +%s)
 
-MAX_SECS=700
+MAX_SECS=800
 
 until $(curl --output /dev/null --silent --head --fail --compressed http://127.0.0.1:8088/extranet-ssff); do
     printf '.'
