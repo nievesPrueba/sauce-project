@@ -20,10 +20,10 @@ script:
     - chmod +x ./script/execute-test.sh;
     - ./script/execute-test.sh localhost
 
-addons:
-  sauce_connect:
-    username: "${SAUCELABS_USER}"
-    access_key: "${SAUCELABS_ACCESS_KEY}"
+#addons:
+#  sauce_connect:
+#    username: "${SAUCELABS_USER}"
+#    access_key: "${SAUCELABS_ACCESS_KEY}"
 
 services:
   - docker
