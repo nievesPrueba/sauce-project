@@ -4,10 +4,10 @@ services:
     image: mysql:5.5
     ports:
      #- "3306:3306"
-     - "8090:8090"
+     - "13306:13306"
     expose:
      #- "3306"
-     - "8090"
+     - "13306"
     environment:
       - MYSQL_ROOT_PASSWORD=root001
       - MYSQL_DATABASE=activemq
@@ -21,16 +21,16 @@ services:
     links:
       - mysql
     #entrypoint: bash -c "dockerize -wait tcp://mysql:3306 -timeout 30s && sh /opt/docker-start.sh"
-    entrypoint: bash -c "dockerize -wait tcp://mysql:8090 -timeout 30s && sh /opt/docker-start.sh"
+    entrypoint: bash -c "dockerize -wait tcp://mysql:13306 -timeout 30s && sh /opt/docker-start.sh"
     environment:
       - ENVIRONMENT=qa
       - ACTIVEMQ_BROKER_URL=tcp://127.0.0.1:61636
       #- DB_CONNECTION_URL=jdbc:mysql://mysql:3306/activemq?relaxAutoCommit=true&autoReconnect=true
-      - DB_CONNECTION_URL=jdbc:mysql://mysql:8090/activemq?relaxAutoCommit=true&autoReconnect=true
+      - DB_CONNECTION_URL=jdbc:mysql://mysql:13306/activemq?relaxAutoCommit=true&autoReconnect=true
       - DB_USERNAME=root
       - DB_PASSWORD=root001
       #- MYSQL_URL=jdbc:mysql://mysql:3306/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
-      - MYSQL_URL=jdbc:mysql://mysql:8090/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
+      - MYSQL_URL=jdbc:mysql://mysql:13306/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root001
       - ESB_VERSION_EXTRANETSSFF=1.4.0
