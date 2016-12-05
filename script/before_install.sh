@@ -11,4 +11,9 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   chmod +x docker-compose
   sudo mv docker-compose /usr/local/bin
+
+  docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD";
+  chmod +x ./script/bucle_check_url.sh;
+  docker-compose down;
+  docker-compose up & ./script/bucle_check_url.sh;
 fi
