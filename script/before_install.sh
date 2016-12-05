@@ -15,4 +15,6 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   docker login -e="$DOCKERHUB_EMAIL" -u="$DOCKERHUB_USER" -p="$DOCKERHUB_PASSWORD";
   chmod +x ./script/bucle_check_url.sh;
   docker-compose up -d & ./script/bucle_check_url.sh;
+  sudo fuser -k 3306/tcp;#nuevo
+  docker-compose up -d & ./script/bucle_check_url.sh;#nuevo
 fi
