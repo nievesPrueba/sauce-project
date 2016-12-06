@@ -17,7 +17,7 @@ if [[ "${TRAVIS_TAG}" =~ ${REGEX_TAG} ]]; then
   docker-compose up -d;#nuevo
   sudo fuser -k 3306/tcp;#nuevo
   docker-compose stop;#nuevo
-  docker-compose rm;#nuevo
+  docker-compose -f rm;#nuevo
   docker-compose up;#nuevo
   docker-compose up -d & ./script/bucle_check_url.sh;
 fi
