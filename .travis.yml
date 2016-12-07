@@ -12,6 +12,8 @@ before_deploy:
    # - ./script/before_script.sh;
 
 before_install:
+  # list docker-engine versions
+  - apt-cache madison docker-engine;
   - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=${DOCKER_VERSION};
   - docker version;
   - chmod +x ./script/before_install.sh;
