@@ -39,3 +39,6 @@ env:
     - DOCKER_VERSION: 1.12.0-0~trusty
     - DOCKER_COMPOSE_VERSION: 1.8.1
  
+cache:
+  directories:
+    - $HOME/.m2
