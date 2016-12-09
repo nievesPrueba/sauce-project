@@ -20,12 +20,15 @@ before_install:
   # - docker version;
   - mkdir $HOME/mule_output
   - chmod +x ./script/before_install.sh;
+  - cat $HOME/mule_output/mule.log
   - ./script/before_install.sh
+  - cat $HOME/mule_output/mule.log
 
 script:
     - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
     - chmod +x ./script/execute-test.sh;
     - ./script/execute-test.sh localhost
+    - cat $HOME/mule_output/mule.log
 
 #addons:
 #  sauce_connect:
