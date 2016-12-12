@@ -18,17 +18,13 @@ before_install:
   # upgrade docker-engine to specific version
   # - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-engine=${DOCKER_VERSION};
   # - docker version;
-  - mkdir $HOME/mule_output
   - chmod +x ./script/before_install.sh;
-  - cat $HOME/mule_output/mule.log
   - ./script/before_install.sh
-  - cat $HOME/mule_output/mule.log
 
 script:
     - echo "El job de Travis es ${TRAVIS_JOB_NUMBER}";
     - chmod +x ./script/execute-test.sh;
     - ./script/execute-test.sh localhost
-    - cat $HOME/mule_output/mule.log
 
 #addons:
 #  sauce_connect:
