@@ -11,7 +11,7 @@ until $(curl --output /dev/null --silent --head --fail --compressed http://127.0
     # Esperamos 5 segundos
     sleep 5
     
-    tail -25 $HOME/mule_output/mule.log
+    #tail -25 $HOME/mule_output/mule.log
 
     # Se calcula el tiempo total esperado
     TIMEEND=$(date +%s)
