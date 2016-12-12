@@ -18,16 +18,16 @@ services:
       - mysql
     links:
       - mysql
-    volumes:
-      - $HOME/mule_output:/opt/mule/logs
-    entrypoint: bash -c "dockerize -wait tcp://mysql:3306 -timeout 30s && sh /opt/docker-start.sh"
+   # volumes:
+   #   - $HOME/mule_output:/opt/mule/logs
+    entrypoint: bash -c "dockerize -wait tcp://mysql:3366 -timeout 30s && sh /opt/docker-start.sh"
     environment:
       - ENVIRONMENT=qa
       - ACTIVEMQ_BROKER_URL=tcp://127.0.0.1:61636
-      - DB_CONNECTION_URL=jdbc:mysql://mysql:3306/activemq?relaxAutoCommit=true&autoReconnect=true
+      - DB_CONNECTION_URL=jdbc:mysql://mysql:3366/activemq?relaxAutoCommit=true&autoReconnect=true
       - DB_USERNAME=root
       - DB_PASSWORD=root001
-      - MYSQL_URL=jdbc:mysql://mysql:3306/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
+      - MYSQL_URL=jdbc:mysql://mysql:3366/asvintegration?autoReconnect=true&createDatabaseIfNotExist=true
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root001
       - ESB_VERSION_EXTRANETSSFF=1.4.0
